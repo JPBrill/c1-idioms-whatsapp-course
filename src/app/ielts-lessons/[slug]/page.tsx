@@ -8,9 +8,11 @@ export async function generateStaticParams() {
   return getAllLessons().map((l) => ({ slug: l.slug }));
 }
 
-export async function generateMetadata(props: any): Promise<Metadata> {
-  const { params } = props as { params: { slug: string } };
-  const lesson = getLesson(params.slug);
+export async function generateMetadata(
+  props: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const lesson = getLesson(slug);
   if (!lesson) return {};
   return {
     title: lesson.title,
@@ -25,13 +27,15 @@ const SKILL_COLOR: Record<string, string> = {
   Speaking: 'bg-amber-50 text-amber-700 border-amber-200',
 };
 
-export default function LessonPage(props: any) {
-  const { params } = props as { params: { slug: string } };
-  const lesson = getLesson(params.slug);
+export default async function LessonPage(
+  props: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await props.params;
+  const lesson = getLesson(slug);
   if (!lesson) notFound();
 
   const allLessons = getAllLessons().filter((l) => l.skill === lesson.skill);
-  const idx = allLessons.findIndex((l) => l.slug === params.slug);
+  const idx = allLessons.findIndex((l) => l.slug === slug);
   const prev = allLessons[idx - 1];
   const next = allLessons[idx + 1];
 
