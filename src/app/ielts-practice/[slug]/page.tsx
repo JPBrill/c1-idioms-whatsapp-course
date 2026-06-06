@@ -4,19 +4,19 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getAllPractice, getPractice } from '@/lib/lessons';
 import type { Metadata } from 'next';
 
-type Props = { params: { slug: string } };
-
 export async function generateStaticParams() {
   return getAllPractice().map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { params } = props as { params: { slug: string } };
   const p = getPractice(params.slug);
   if (!p) return {};
   return { title: p.title, description: p.description };
 }
 
-export default function PracticeItemPage({ params }: Props) {
+export default function PracticeItemPage(props: any) {
+  const { params } = props as { params: { slug: string } };
   const practice = getPractice(params.slug);
   if (!practice) notFound();
   return (

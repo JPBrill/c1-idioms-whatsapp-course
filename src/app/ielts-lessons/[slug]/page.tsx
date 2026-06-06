@@ -4,13 +4,12 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getAllLessons, getLesson } from '@/lib/lessons';
 import type { Metadata } from 'next';
 
-type Props = { params: { slug: string } };
-
 export async function generateStaticParams() {
   return getAllLessons().map((l) => ({ slug: l.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { params } = props as { params: { slug: string } };
   const lesson = getLesson(params.slug);
   if (!lesson) return {};
   return {
@@ -26,7 +25,8 @@ const SKILL_COLOR: Record<string, string> = {
   Speaking: 'bg-amber-50 text-amber-700 border-amber-200',
 };
 
-export default function LessonPage({ params }: Props) {
+export default function LessonPage(props: any) {
+  const { params } = props as { params: { slug: string } };
   const lesson = getLesson(params.slug);
   if (!lesson) notFound();
 
