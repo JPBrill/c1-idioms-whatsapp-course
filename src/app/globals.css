@@ -4,28 +4,23 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  /* Surfaces */
   --color-bg:          #f5f4ef;
   --color-surface:     #fefdf9;
   --color-surface-2:   #f0efe9;
   --color-border:      #e3e1d9;
   --color-border-soft: #ede9e0;
 
-  /* Brand — teal-forest */
   --color-primary:       #00787f;
   --color-primary-dark:  #005960;
   --color-primary-light: #e6f5f6;
 
-  /* Accent — warm amber */
   --color-accent:        #d97706;
   --color-accent-light:  #fef3c7;
 
-  /* Text */
   --color-text:          #1a1814;
   --color-text-muted:    #6b6760;
   --color-text-faint:    #a09d97;
 
-  /* Skill colours */
   --skill-listening-bg:    #f0fafa;
   --skill-listening-text:  #0f6b6b;
   --skill-listening-border:#b2e0e0;
@@ -39,13 +34,11 @@
   --skill-speaking-text:   #b45309;
   --skill-speaking-border: #fde68a;
 
-  /* Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
   --radius-xl: 1.75rem;
 
-  /* Shadow */
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / .06);
   --shadow-md: 0 4px 16px 0 rgb(0 0 0 / .08);
   --shadow-lg: 0 8px 32px 0 rgb(0 0 0 / .10);
@@ -76,6 +69,20 @@ h1, .display { font-family: 'Fraunces', Georgia, serif; }
 ::-webkit-scrollbar        { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track  { background: transparent; }
 ::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 99px; }
+
+/* ─── Nav link (used in SiteHeader — Server Component safe) ───────── */
+.nav-link {
+  padding: 0.375rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-link:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
 
 /* ─── Prose ──────────────────────────────────────────────────── */
 .prose {
@@ -126,9 +133,9 @@ h1, .display { font-family: 'Fraunces', Georgia, serif; }
   overflow: hidden;
   border: 1px solid var(--color-border);
 }
-.prose thead            { background: var(--color-surface-2); }
-.prose thead th         { font-weight: 600; padding: 0.6rem 0.9rem; }
-.prose td               { padding: 0.5rem 0.9rem; }
+.prose thead               { background: var(--color-surface-2); }
+.prose thead th            { font-weight: 600; padding: 0.6rem 0.9rem; }
+.prose td                  { padding: 0.5rem 0.9rem; }
 .prose tr:nth-child(even) td { background: var(--color-surface-2); }
 
 .prose code {

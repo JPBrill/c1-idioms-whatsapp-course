@@ -11,10 +11,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Preconnect for faster font load */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Inter + Fraunces */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&display=swap"
@@ -54,34 +52,18 @@ function SiteHeader() {
           >
             IE
           </span>
-          <span
-            className="hidden sm:block"
-            style={{ fontFamily: 'Fraunces, Georgia, serif' }}
-          >
+          <span className="hidden sm:block" style={{ fontFamily: 'Fraunces, Georgia, serif' }}>
             IELTS Prep
           </span>
         </Link>
 
-        <nav className="flex items-center gap-1 text-sm">
+        <nav className="flex items-center gap-1">
           {[
             { href: '/ielts-lessons',  label: '📖 Lessons'   },
             { href: '/ielts-practice', label: '✏️ Practice'  },
             { href: '/idioms',         label: '💬 C1 Idioms' },
           ].map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="px-3 py-1.5 rounded-full font-medium transition-all"
-              style={{ color: 'var(--color-text-muted)' }}
-              onMouseOver={(e) => {
-                (e.currentTarget as HTMLElement).style.background = 'var(--color-surface-2)';
-                (e.currentTarget as HTMLElement).style.color = 'var(--color-text)';
-              }}
-              onMouseOut={(e) => {
-                (e.currentTarget as HTMLElement).style.background = 'transparent';
-                (e.currentTarget as HTMLElement).style.color = 'var(--color-text-muted)';
-              }}
-            >
+            <Link key={href} href={href} className="nav-link">
               {label}
             </Link>
           ))}
@@ -93,10 +75,7 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer
-      className="border-t mt-24 py-10"
-      style={{ borderColor: 'var(--color-border)' }}
-    >
+    <footer className="border-t mt-24 py-10" style={{ borderColor: 'var(--color-border)' }}>
       <div
         className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"
         style={{ color: 'var(--color-text-faint)' }}
@@ -111,19 +90,11 @@ function SiteFooter() {
           <span>Free IELTS Prep · No sign-up needed</span>
         </div>
         <div className="flex items-center gap-4">
-          <a
-            href="https://github.com/JPBrill"
-            className="hover:text-[var(--color-primary)] transition-colors"
-            target="_blank" rel="noopener noreferrer"
-          >
+          <a href="https://github.com/JPBrill" className="hover:text-[var(--color-primary)] transition-colors" target="_blank" rel="noopener noreferrer">
             Built by JPBrill
           </a>
           <span>·</span>
-          <a
-            href="https://github.com/JPBrill/c1-idioms-whatsapp-course"
-            className="hover:text-[var(--color-primary)] transition-colors"
-            target="_blank" rel="noopener noreferrer"
-          >
+          <a href="https://github.com/JPBrill/c1-idioms-whatsapp-course" className="hover:text-[var(--color-primary)] transition-colors" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
         </div>
