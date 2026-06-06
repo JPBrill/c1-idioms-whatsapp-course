@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'IELTS Lessons',
-  description: '70 structured IELTS lessons covering Listening, Reading, Writing, and Speaking.',
+  description: 'Structured IELTS lessons covering Listening, Reading, Writing, and Speaking.',
 };
 
 const SKILL_EMOJI: Record<string, string> = {
@@ -30,7 +30,7 @@ export default function IeltsLessonsPage() {
       <div>
         <h1 className="text-3xl font-bold mb-2">IELTS Lessons</h1>
         <p className="text-gray-500 max-w-2xl">
-          70 structured lessons covering all four IELTS skills. Each lesson breaks down exactly
+          Structured lessons covering all four IELTS skills. Each lesson breaks down exactly
           what to expect, strategies that work, and links to practice tests.
         </p>
       </div>
@@ -43,7 +43,7 @@ export default function IeltsLessonsPage() {
             <div className="flex items-center gap-2 mb-4">
               <span className="text-2xl">{SKILL_EMOJI[skill]}</span>
               <h2 className="text-xl font-semibold">{skill}</h2>
-              <span className="text-xs text-gray-400 ml-1">{group.length} lessons</span>
+              <span className="text-xs text-gray-400 ml-1">{group.length} lesson{group.length !== 1 ? 's' : ''}</span>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {group.map((lesson) => (
