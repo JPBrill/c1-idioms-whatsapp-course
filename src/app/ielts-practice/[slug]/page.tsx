@@ -8,17 +8,22 @@ export async function generateStaticParams() {
   return getAllPractice().map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata(props: any): Promise<Metadata> {
-  const { params } = props as { params: { slug: string } };
-  const p = getPractice(params.slug);
+export async function generateMetadata(
+  props: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const p = getPractice(slug);
   if (!p) return {};
   return { title: p.title, description: p.description };
 }
 
-export default function PracticeItemPage(props: any) {
-  const { params } = props as { params: { slug: string } };
-  const practice = getPractice(params.slug);
+export default async function PracticeItemPage(
+  props: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await props.params;
+  const practice = getPractice(slug);
   if (!practice) notFound();
+
   return (
     <div className="max-w-3xl mx-auto">
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-6">
