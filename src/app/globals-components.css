@@ -1,7 +1,135 @@
-/* Reusable button classes referenced in JSX */
-.btn-primary {
-  @apply inline-flex items-center gap-1 bg-[#01696f] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#0c4e54] transition-colors shadow-sm;
+/* ─── FeaturedLesson hero ────────────────────────────────────── */
+.featured-lesson-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: #fff;
+  border-radius: var(--radius-xl);
+  padding: 2rem 2.25rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-lg);
 }
-.btn-secondary {
-  @apply inline-flex items-center gap-1 bg-white text-[#01696f] text-sm font-medium px-5 py-2.5 rounded-full border border-[rgba(1,105,111,0.25)] hover:bg-[rgba(1,105,111,0.04)] transition-colors;
+.featured-lesson-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(255,255,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.featured-lesson-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgb(0 89 96 / .35);
+}
+
+.featured-lesson-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.featured-lesson-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 99px;
+  padding: 0.2rem 0.7rem;
+  color: #fff;
+}
+
+.featured-lesson-week {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+
+.featured-lesson-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featured-lesson-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+
+.featured-lesson-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0;
+}
+
+.featured-lesson-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 52ch;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.featured-lesson-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.9rem;
+  width: fit-content;
+}
+
+.featured-lesson-preview-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55);
+}
+
+.featured-lesson-preview-idiom {
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #fff;
+}
+
+.featured-lesson-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-top: 0.25rem;
+}
+
+.featured-lesson-cta-text {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.18s ease;
+}
+
+.featured-lesson-arrow {
+  font-size: 1rem;
+  transition: transform 0.18s ease;
+}
+
+.featured-lesson-hero:hover .featured-lesson-arrow {
+  transform: translateX(4px);
 }

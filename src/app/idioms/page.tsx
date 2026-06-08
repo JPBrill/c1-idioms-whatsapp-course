@@ -1,9 +1,10 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import FeaturedLesson from '@/components/FeaturedLesson';
 
 export const metadata: Metadata = {
   title: 'C1 Idioms — WhatsApp Course',
-  description: 'Free 8-module C1 idioms course delivered as daily WhatsApp mini-lessons for advanced English learners.',
+  description:
+    'Free 8-module C1 idioms course delivered as daily WhatsApp mini-lessons for advanced English learners.',
 };
 
 const MODULES = [
@@ -11,6 +12,8 @@ const MODULES = [
     week: 1,
     theme: 'Emotions & Mood',
     slug: 'module-01-emotions',
+    description:
+      'Learn to express feelings like a native speaker—from joy and anger to anxiety and calm.',
     idioms: [
       'over the moon',
       'down in the dumps',
@@ -28,6 +31,8 @@ const MODULES = [
     week: 2,
     theme: 'Work & Productivity',
     slug: 'module-02-work',
+    description:
+      'Sound confident in meetings, emails, and office conversations with natural work idioms.',
     idioms: [
       'hit the ground running',
       'on the back burner',
@@ -45,6 +50,8 @@ const MODULES = [
     week: 3,
     theme: 'Risk & Decision-Making',
     slug: 'module-03-risk',
+    description:
+      'Talk about bold choices, calculated risks, and difficult decisions naturally.',
     idioms: [
       'play it by ear',
       'go out on a limb',
@@ -62,6 +69,8 @@ const MODULES = [
     week: 4,
     theme: 'Relationships & Conflict',
     slug: 'module-04-relationships',
+    description:
+      'Describe how people connect, clash, and make up—in real English.',
     idioms: [
       'hit it off',
       'on the same wavelength',
@@ -72,13 +81,15 @@ const MODULES = [
       'rub someone up the wrong way',
       'patch things up',
       'fall out with someone',
-      'be at each other\'s throats',
+      "be at each other's throats",
     ],
   },
   {
     week: 5,
     theme: 'Time & Planning',
     slug: 'module-05-time',
+    description:
+      'Master native expressions for deadlines, delays, urgency, and scheduling.',
     idioms: [
       'last-minute',
       'in the long run',
@@ -96,6 +107,8 @@ const MODULES = [
     week: 6,
     theme: 'Thinking & Learning',
     slug: 'module-06-thinking',
+    description:
+      'Express ideas, memory, confusion, and understanding the way native speakers do.',
     idioms: [
       'food for thought',
       'in two minds',
@@ -105,7 +118,7 @@ const MODULES = [
       'draw a blank',
       'get your head around something',
       'on the tip of your tongue',
-      'pick someone\'s brain',
+      "pick someone's brain",
       'come to grips with',
     ],
   },
@@ -113,6 +126,8 @@ const MODULES = [
     week: 7,
     theme: 'Money & Value',
     slug: 'module-07-money',
+    description:
+      'Talk about prices, spending, budgeting, and value without sounding textbook.',
     idioms: [
       'cost an arm and a leg',
       'bang for your buck',
@@ -130,6 +145,8 @@ const MODULES = [
     week: 8,
     theme: 'Communication & Honesty',
     slug: 'module-08-communication',
+    description:
+      'Express directness, misunderstanding, and clarity in conversation naturally.',
     idioms: [
       'get straight to the point',
       'beat around the bush',
@@ -145,55 +162,47 @@ const MODULES = [
   },
 ];
 
+const FEATURED = MODULES[0];
+
 export default function IdiomsPage() {
   return (
     <div className="space-y-10">
-      <div>
-        <span className="inline-block text-xs font-medium bg-brand-light text-brand px-3 py-1 rounded-full mb-3">
-          Level: C1 / IELTS 7+
-        </span>
-        <h1 className="text-3xl font-bold mb-2">C1 Idioms — WhatsApp Mini-Lessons</h1>
-        <p className="text-gray-500 max-w-2xl">
-          8 thematic modules · 80 idioms. Ten WhatsApp-ready mini-lessons per theme,
-          plus a weekly review challenge. Designed for learners who know the grammar
-          but struggle to sound native.
-        </p>
-        <div className="flex flex-wrap gap-3 mt-5">
-          <a href="YOUR_WHATSAPP_LINK" className="btn-primary" target="_blank" rel="noopener noreferrer">
-            Join on WhatsApp
-          </a>
-          <a
-            href="https://github.com/JPBrill/c1-idioms-whatsapp-course"
-            className="btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on GitHub
-          </a>
-        </div>
-      </div>
+      {/* ── Featured hero ── */}
+      <FeaturedLesson
+        week={FEATURED.week}
+        theme={FEATURED.theme}
+        slug={FEATURED.slug}
+        firstIdiom={FEATURED.idioms[0]}
+        totalIdioms={FEATURED.idioms.length}
+        description={FEATURED.description}
+      />
 
-      <div className="grid sm:grid-cols-2 gap-4">
-        {MODULES.map((m) => (
-          <div
-            key={m.slug}
-            className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-medium text-brand">Week {m.week}</span>
-              <span className="text-xs text-gray-400">{m.idioms.length} idioms + review</span>
+      {/* ── Module grid ── */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4">All modules</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {MODULES.map((m) => (
+            <div
+              key={m.slug}
+              className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-medium text-[var(--color-primary)]">Week {m.week}</span>
+                <span className="text-xs text-[var(--color-text-faint)]">{m.idioms.length} idioms + review</span>
+              </div>
+              <div className="font-semibold mb-1">{m.theme}</div>
+              <p className="text-xs text-[var(--color-text-muted)] mb-3 leading-relaxed">{m.description}</p>
+              <ul className="space-y-1">
+                {m.idioms.map((idiom) => (
+                  <li key={idiom} className="text-sm text-[var(--color-text-muted)] flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-[var(--color-primary)] shrink-0" />
+                    {idiom}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="font-semibold mb-3">{m.theme}</div>
-            <ul className="space-y-1">
-              {m.idioms.map((idiom) => (
-                <li key={idiom} className="text-sm text-gray-500 flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-brand shrink-0" />
-                  {idiom}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
